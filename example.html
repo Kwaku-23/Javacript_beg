@@ -2,9 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-
     <title>Number guessing game</title>
-
     <style>
       html {
         font-family: sans-serif;
@@ -44,14 +42,15 @@
     </div>
 
     <script>
-      let randomNumber = Math.floor(Math.random()) + 1;
+      // Generates the initial random number
+      let randomNumber = Math.floor(Math.random() * 100) + 1;
 
       const guesses = document.querySelector(".guesses");
       const lastResult = document.querySelector(".lastResult");
-      const lowOrHi = document.querySelector("lowOrHi");
+      const lowOrHi = document.querySelector(".lowOrHi");
       const guessSubmit = document.querySelector(".guessSubmit");
       const guessField = document.querySelector(".guessField");
-console.log(lowOrHi);
+      
       let guessCount = 1;
       let resetButton;
 
@@ -67,7 +66,7 @@ console.log(lowOrHi);
           lastResult.style.backgroundColor = "green";
           lowOrHi.textContent = "";
           setGameOver();
-        } else if (guessCount === 10) {
+        } else if (guessCount === 10) { // Fixed: using === for comparison
           lastResult.textContent = "!!!GAME OVER!!!";
           setGameOver();
         } else {
@@ -84,6 +83,7 @@ console.log(lowOrHi);
         guessField.value = "";
         guessField.focus();
       }
+      
       guessSubmit.addEventListener("click", checkGuess);
 
       function setGameOver() {
@@ -102,6 +102,7 @@ console.log(lowOrHi);
         for (const resetPara of resetParas) {
           resetPara.textContent = "";
         }
+        
         resetButton.parentNode.removeChild(resetButton);
 
         guessField.disabled = false;
@@ -111,7 +112,8 @@ console.log(lowOrHi);
 
         lastResult.style.backgroundColor = "white";
 
-        randomNumber = Math.floor(Math.random()) + 1;
+        // Fixed: multiplying by 100 to get a number between 1 and 100
+        randomNumber = Math.floor(Math.random() * 100) + 1; 
       }
     </script>
   </body>
