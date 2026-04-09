@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock</title>
+</head>
+<body>
+    
+    <script>
+        let humanScore =0;
+        let computerScore =0;
+        //console.log("Hello World")
+        function getComputerChoice(){
+            let shoot=Math.floor(Math.random() * 3) + 1;
+            
+            if(shoot==1){
+                return "rock";
+            }else if(shoot==2){
+                return "paper";
+            }else{
+                return "scissors";
+            }
+        }
+        // console.log(getComputerChoice());
+
+        function getHumanChoice() {
+            let choice = prompt("Please choose: rock, paper, or scissors");
+                return choice;
+}   
+// console.log("The human chose: " + getHumanChoice()); 
+
+function playRound(humanChoice,computerChoice){
+     humanChoice = humanChoice.toLowerCase();
+
+    // 2. Handle a Tie
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie! Both chose " + humanChoice);
+    } 
+    
+    else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        humanScore++;
+        console.log("You win! " + humanChoice + " beats " + computerChoice);
+    } 
+   
+    else {
+        computerScore++;
+        console.log("You lose! " + computerChoice + " beats " + humanChoice);
+    }
+
+}
+// Get the choices
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Play the round
+playRound(humanSelection, computerSelection);
+
+// Print the scores to prove it worked
+console.log("Human Score: " + humanScore);
+console.log("Computer Score: " + computerScore);
+
+</script>
+</body>
+</html>
