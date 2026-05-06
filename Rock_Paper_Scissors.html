@@ -8,9 +8,10 @@
 <body>
     
     <script>
-        let humanScore =0;
-        let computerScore =0;
+       
         //console.log("Hello World")
+
+        // FUNCTION to get the Computer choice
         function getComputerChoice(){
             let shoot=Math.floor(Math.random() * 3) + 1;
             
@@ -24,13 +25,20 @@
         }
         // console.log(getComputerChoice());
 
+        //Function to get The User Input
         function getHumanChoice() {
             let choice = prompt("Please choose: rock, paper, or scissors");
                 return choice;
 }   
 // console.log("The human chose: " + getHumanChoice()); 
 
-function playRound(humanChoice,computerChoice){
+//Function  for the rounds to be play by the User and computer
+function playGame(){
+         let humanScore =0;
+        let computerScore =0;
+
+        // Function to know the choice of the both of them and decide who wins
+        function playRound(humanChoice,computerChoice){
      humanChoice = humanChoice.toLowerCase();
 
     // 2. Handle a Tie
@@ -52,17 +60,30 @@ function playRound(humanChoice,computerChoice){
         console.log("You lose! " + computerChoice + " beats " + humanChoice);
     }
 
-}
-// Get the choices
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+        }
+        for(let i=1;i<=5;i++){
+            console.log("----ROUND" + i + "----" );
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
 
-// Play the round
-playRound(humanSelection, computerSelection);
+        }
+// 5. Declare the overall winner after the loop finishes
+            console.log("=== FINAL SCORE ===");
+            console.log("Human: " + humanScore + " | Computer: " + computerScore);
+            
+            if (humanScore > computerScore) {
+                console.log("🎉 YOU WON THE TOURNAMENT! 🎉");
+            } else if (computerScore > humanScore) {
+                console.log("💀 THE COMPUTER WON THE TOURNAMENT! 💀");
+            } else {
+                console.log("🤝 IT'S A TIE TOURNAMENT! 🤝");
+            }
+        }
+playGame();
 
-// Print the scores to prove it worked
-console.log("Human Score: " + humanScore);
-console.log("Computer Score: " + computerScore);
+
+
 
 </script>
 </body>
